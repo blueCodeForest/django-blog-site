@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}投稿一覧 | {{ block.super }}{% endblock %}
+{% block description %}マイブログです。毎日更新します。{% endblock %}
+
+{% block content %}
+
+{% load static %}
+
+<h1>カテゴリ一覧</h1>
+<ul>
+    {% for category in object_list %}
+    <li><a href="{% url 'blog:category_post' category.slug %}">{{ category.name }} ({{ category.num_posts }})</a></li>
+    {% empty %}
+    <li>カテゴリはありません。</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
