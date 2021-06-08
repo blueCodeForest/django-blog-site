@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 import os
 from pathlib import Path
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -71,8 +72,11 @@ DATABASES = {
         'PASSWORD': '123456',
         'HOST': '',
         'PORT': '',
+        'CONN_MAX_AGE': 500,
     }
 }
+
+DATABASES['default'] = dj_database_​url.config(conn_max_​age=600, ssl_require=True)
 
 
 # Password validation
